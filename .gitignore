@@ -1,0 +1,9 @@
+/bge_m3/
+/bge_reranker/
+/data/
+/test/
+__pycache__/
+.antigravity/
+.idea/
+.vscode/
+.venv/
