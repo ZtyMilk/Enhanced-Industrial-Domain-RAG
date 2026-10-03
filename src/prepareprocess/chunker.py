@@ -3,6 +3,8 @@ from pathlib import Path
 
 import pymupdf
 
+from .cleaner import is_noise_chunk
+
 
 class Chunker:
     def __init__(
@@ -134,6 +136,12 @@ class Chunker:
             bounding_box = text_block[:4]  # the form: (x0, y0, x1, y1)
             text = text_block[4].strip()
             if len(text) < 50 or re.match(r"^\d+$", text):
+                continue
+            if (
+                re.search(r"^\s*(\d+[\.、]\s*)?根据权利要求", text)
+                or len(re.findall(r"CN\s*\d+", text)) >= 2
+                or "权利要求书" in text[:30]
+            ) or is_noise_chunk(text=text):
                 continue
             if any(
                 self._is_bounding_box_overlap(bounding_box, table_bounding_box)

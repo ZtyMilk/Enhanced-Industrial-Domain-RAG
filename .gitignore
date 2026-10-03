@@ -1,5 +1,5 @@
 /bge_m3/
-/bge_reranker/
+/bge_reranker_large/
 /data/
 /test/
 __pycache__/
@@ -7,3 +7,4 @@ __pycache__/
 .idea/
 .vscode/
 .venv/
+.src/decisionmodeltry
