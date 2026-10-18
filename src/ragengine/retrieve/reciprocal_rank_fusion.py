@@ -2,8 +2,9 @@ def reciprocal_rank_fusion(
     graph_chunks: list,
     hype_chunks: list,
     top_k: int,
-    k: int,
+    rank_constant: int,
 ):
+    k = rank_constant  # smooth_factor
     fused_scores = {}
     chunk_dictionary = {}
     for rank, chunk in enumerate(graph_chunks, start=1):

@@ -16,6 +16,8 @@ def reranker(
     scores = reranker_model.compute_score(
         sentence_pairs=pairs, batch_size=batch_size, max_length=512
     )
+    if scores is None:
+        return []
     reranked_results = []
     for index, candidate in enumerate(candidates):
         entry = candidate.copy()

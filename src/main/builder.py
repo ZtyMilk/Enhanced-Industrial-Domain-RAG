@@ -3,14 +3,18 @@ import time
 from FlagEmbedding import BGEM3FlagModel
 from openai import OpenAI
 
-from embed import Embed
-from hypotheticalprompt import Generator
-from knowledgegraph import EntityAlign, Graphing, RelationAlign
-from multimodelprocess import MutiModelClient
-from prepareprocess import Chunker
+from ragengine import (
+    Chunker,
+    Embed,
+    EntityAlign,
+    Generator,
+    Graphing,
+    MutiModelClient,
+    RelationAlign,
+)
 
 
-def main():
+def builder():
     embedding_model_client = BGEM3FlagModel(
         model_name_or_path=r"./bge_m3",
         normalize_embeddings=True,
@@ -35,7 +39,7 @@ def main():
     print("mutimodel_process beginning...")
     chunks = MutiModelClient(
         language_model_name="qwen-flash",
-        vision_model_name="qwen3-vl-flash",
+        vision_model_name="qwen3-vl-plus",
         workers=32,
         client=large_language_model_client,
     ).all_modality_process(chunks=chunks)
@@ -81,5 +85,4 @@ def main():
     return 0
 
 
-if __name__ == "__main__":
-    main()
+builder()

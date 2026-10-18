@@ -1,7 +1,7 @@
 /bge_m3/
 /bge_reranker_large/
+/seaco_paraformer/
 /data/
-/test/
 __pycache__/
 .antigravity/
 .idea/

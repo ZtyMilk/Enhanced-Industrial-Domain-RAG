@@ -4,9 +4,9 @@ from typing import Any
 import networkx
 from openai import OpenAI
 
-from knowledgegraph.entity_align import EntityAlign
-from knowledgegraph.extract_triples import extract_triples
-from knowledgegraph.relation_align import RelationAlign
+from .entity_align import EntityAlign
+from .extract_triples import extract_triples
+from .relation_align import RelationAlign
 
 
 class Graphing:
